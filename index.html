@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merkaz Tennis - Lettre de Mission & Cahier des Charges</title>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --primary: #1e40af;
+            --primary-light: #3b82f6;
+            --bg-page: #f1f5f9;
+            --bg-card: #ffffff;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --warning-bg: #fef9c3;
+            --warning-border: #eab308;
+            --success: #22c55e;
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-page);
+            color: var(--text);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* HERO HEADER */
+        .hero {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--primary) 60%, var(--primary-light) 100%);
+            padding: 80px 40px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                linear-gradient(30deg, transparent 40%, rgba(59,130,246,0.05) 40%, rgba(59,130,246,0.05) 41%, transparent 41%),
+                linear-gradient(150deg, transparent 40%, rgba(59,130,246,0.05) 40%, rgba(59,130,246,0.05) 41%, transparent 41%),
+                linear-gradient(60deg, transparent 60%, rgba(255,255,255,0.02) 60%, rgba(255,255,255,0.02) 61%, transparent 61%),
+                linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.02) 30%, rgba(255,255,255,0.02) 31%, transparent 31%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.75);
+            font-weight: 300;
+            margin-bottom: 24px;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .badge {
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-confidential {
+            background: rgba(239,68,68,0.15);
+            color: #fca5a5;
+            border: 1px solid rgba(239,68,68,0.3);
+        }
+
+        .badge-version {
+            background: rgba(59,130,246,0.15);
+            color: #93c5fd;
+            border: 1px solid rgba(59,130,246,0.3);
+        }
+
+        /* TABS */
+        .tabs-container {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg-card);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tabs {
+            display: flex;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .tab {
+            padding: 18px 32px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+        }
+
+        .tab:hover {
+            color: var(--primary);
+            background: rgba(30,64,175,0.03);
+        }
+
+        .tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        /* CONTENT */
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* CARDS / SECTIONS */
+        .section-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 36px 40px;
+            margin-bottom: 28px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03);
+            border: 1px solid var(--border);
+        }
+
+        .section-card.important {
+            border-left: 4px solid var(--primary);
+        }
+
+        .section-card.warning-section {
+            border-left: 4px solid var(--warning-border);
+        }
+
+        h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--bg-dark);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-top: 28px;
+            margin-bottom: 14px;
+        }
+
+        h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 14px;
+        }
+
+        ul, ol {
+            margin-bottom: 14px;
+            padding-left: 24px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        /* PARTIES CARDS */
+        .parties-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .party-card {
+            background: var(--bg-page);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .party-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .party-card h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+
+        /* TABLES */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 16px 0;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        thead th {
+            background: linear-gradient(135deg, var(--bg-dark), #1e3a5f);
+            color: #ffffff;
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        tbody tr {
+            transition: background 0.15s;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        tbody tr:hover {
+            background: #eff6ff;
+        }
+
+        td {
+            padding: 12px 16px;
+            border-top: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        /* WARNING / A VALIDER BLOCKS */
+        .block-warning {
+            background: var(--warning-bg);
+            border-left: 4px solid var(--warning-border);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin: 18px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .block-warning::before {
+            content: '\26A0';
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .block-warning p {
+            margin: 0;
+            font-weight: 600;
+            color: #92400e;
+        }
+
+        /* HORS SCOPE BLOCK */
+        .block-hors-scope {
+            background: #f3f4f6;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            border: 1px solid #d1d5db;
+        }
+
+        .hors-scope-badge {
+            display: inline-block;
+            background: var(--danger);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .hors-scope-title {
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        .hors-scope-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        /* IMAGES */
+        .image-block {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .image-block img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .image-block img:hover {
+            transform: scale(1.01);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        .image-caption {
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin-top: 10px;
+        }
+
+        /* COLOR SWATCHES */
+        .color-swatch {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-right: 8px;
+            border: 2px solid rgba(0,0,0,0.1);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        /* SCHEMA RELATIONNEL */
+        .schema-container {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 1px solid var(--border);
+            overflow-x: auto;
+        }
+
+        .schema-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .schema-entity {
+            background: var(--bg-card);
+            border-radius: 8px;
+            border: 2px solid var(--primary-light);
+            min-width: 160px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .schema-entity-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: #fff;
+            padding: 8px 14px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .schema-entity-body {
+            padding: 10px 14px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .schema-relations {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .schema-relations code {
+            background: #e2e8f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        /* FOOTER */
+        .footer {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        .footer-confidential {
+            display: inline-block;
+            border: 1px solid rgba(239,68,68,0.3);
+            border-radius: 8px;
+            padding: 12px 24px;
+            color: var(--danger);
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+
+        .footer-meta {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+        }
+
+        /* CODE BLOCK */
+        .code-block {
+            background: var(--bg-dark);
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            margin: 16px 0;
+            line-height: 1.6;
+        }
+
+        /* LIGHTBOX */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 0 60px rgba(0,0,0,0.5);
+        }
+
+        /* PRINT */
+        @media print {
+            .hero { background: #fff; padding: 20px; }
+            .hero h1 { color: #000; font-size: 1.8rem; }
+            .hero .subtitle { color: #333; }
+            .hero::before, .hero::after { display: none; }
+            .badge { border: 1px solid #000; color: #000; background: none; }
+            .tabs-container { display: none; }
+            .tab-content { display: block !important; }
+            .section-card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+            .content-wrapper { padding: 20px; }
+            body { background: #fff; }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero { padding: 50px 20px 40px; }
+            .hero h1 { font-size: 1.8rem; }
+            .content-wrapper { padding: 20px; }
+            .section-card { padding: 24px 20px; }
+            .parties-grid { grid-template-columns: 1fr; }
+            .tabs { padding: 0 16px; }
+            .tab { padding: 14px 18px; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO HEADER -->
+<header class="hero">
+    <div class="hero-content">
+        <h1>Lettre de Mission & Cahier des Charges</h1>
+        <p class="subtitle">Module de Reservation de Terrains - Merkaz Tennis</p>
+        <div class="hero-badges">
+            <span class="badge badge-confidential">Confidentiel</span>
+            <span class="badge badge-version">v1.0</span>
+        </div>
+    </div>
+</header>
+
+<!-- TABS -->
+<nav class="tabs-container">
+    <div class="tabs">
+        <div class="tab active" data-tab="tab1">Lettre de Mission</div>
+        <div class="tab" data-tab="tab2">Cahier des Charges</div>
+    </div>
+</nav>
+
+<!-- CONTENT -->
+<main class="content-wrapper">
+
+<!-- TAB 1: LETTRE DE MISSION -->
+<div class="tab-content active" id="tab1">
+
+<!-- ARTICLE 1 -->
+<section class="section-card">
+    <h2>1. Parties</h2>
+    <div class="parties-grid">
+        <div class="party-card">
+            <h3>1.1 Le Prestataire</h3>
+            <div class="table-wrapper">
+                <table>
+                    <tbody>
+                        <tr><td><strong>Raison sociale</strong></td><td>Jeremy Bouznah LTD | &#1490;&#1512;&#1502;&#1497; &#1489;&#1493;&#1494;&#1504;&#1492; &#1489;&#1506;"&#1502;</td></tr>
+                        <tr><td><strong>Numero d'immatriculation</strong></td><td>517110912</td></tr>
+                        <tr><td><strong>Adresse</strong></td><td>71 Rue Shahal, Jerusalem, Israel</td></tr>
+                        <tr><td><strong>Telephone</strong></td><td>058.59.65.171</td></tr>
+                        <tr><td><strong>Email</strong></td><td>bouznahjeremy@gmail.com</td></tr>
+                        <tr><td><strong>Representant</strong></td><td>Jeremy Bouznah, Gerant</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="party-card">
+            <h3>1.2 Le Donneur d'Ordre</h3>
+            <div class="table-wrapper">
+                <table>
+                    <tbody>
+                        <tr><td><strong>Raison sociale</strong></td><td>VO2 Israel (filiale de VO2 GROUP)</td></tr>
+                        <tr><td><strong>Adresse</strong></td><td>Jaffa St 224, Jerusalem, Israel</td></tr>
+                        <tr><td><strong>Site web</strong></td><td>https://www.vo2-group.com/</td></tr>
+                        <tr><td><strong>Email</strong></td><td>jerusalem@vo2-group.com</td></tr>
+                        <tr><td><strong>Secteur</strong></td><td>Services et conseil en informatique</td></tr>
+                        <tr><td><strong>Maison mere</strong></td><td>VO2 GROUP (Paris, France) - Fondee en 2011, 700+ consultants, Pure player Salesforce</td></tr>
+                        <tr><td><strong>Chef de projet</strong></td><td>Ouriel OHANA</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="party-card full-width">
+            <h3>1.3 Le Client Final</h3>
+            <div class="table-wrapper">
+                <table>
+                    <tbody>
+                        <tr><td><strong>Raison sociale</strong></td><td>Merkazei HaTenis VeHaHinukh BeIsrael | &#1502;&#1512;&#1499;&#1494;&#1497; &#1492;&#1496;&#1504;&#1497;&#1505; &#1493;&#1492;&#1495;&#1497;&#1504;&#1493;&#1498; &#1489;&#1497;&#1513;&#1512;&#1488;&#1500;</td></tr>
+                        <tr><td><strong>Activite</strong></td><td>Reseau de centres de tennis et d'education sportive en Israel</td></tr>
+                        <tr><td><strong>Site web</strong></td><td>https://tennis.org.il/</td></tr>
+                        <tr><td><strong>Siege</strong></td><td>Carrefour du Village Vert, Ramat HaSharon, Israel</td></tr>
+                        <tr><td><strong>Tel national</strong></td><td>*6227</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ARTICLE 2 -->
+<section class="section-card important">
+    <h2>2. Objet de la Mission</h2>
+
+    <h3>2.1 Contexte du projet global</h3>
+    <p>Merkaz Tennis migre son CRM actuel ("Center") vers Salesforce et developpe une application mobile (React Native) pour la reservation de terrains. Le projet se decompose en deux phases. La Phase 1, prevue pour septembre 2026, couvre la reservation de terrains et la mise en place du CRM Salesforce. La Phase 2, jusqu'a janvier 2027, couvre l'inscription aux cours, la gestion des entraineurs et l'espace client complet.</p>
+
+    <h3>2.2 Perimetre de la mission</h3>
+    <p>La presente mission couvre exclusivement la <strong>section 2.4.1 du RFP</strong> ("Reservation de terrains dans le systeme existant / Experience client pour la reservation en ligne") et comprend la conception et la realisation de :</p>
+    <ul>
+        <li><strong>Ecran 1</strong> : Grille Emploi du Temps des terrains (Looze Migrashim) - interface back-office</li>
+        <li><strong>Ecran 2</strong> : Detail d'une reservation (ecran d'ouverture au clic sur une cellule de la grille)</li>
+        <li><strong>Ecran 3</strong> : Affichage public sur ecrans TV (entrees des centres)</li>
+        <li><strong>Ecran 4</strong> : Design de la resolution de conflits (chevauchements de creneaux)</li>
+    </ul>
+
+    <h3>2.3 Exclusions explicites</h3>
+    <p>Sont exclus du perimetre de cette mission :</p>
+    <ul>
+        <li>Le developpement / codage Salesforce LWC</li>
+        <li>L'integration et le branchement au backend Salesforce</li>
+        <li>La formation des utilisateurs</li>
+    </ul>
+</section>
+
+<!-- ARTICLE 3 -->
+<section class="section-card">
+    <h2>3. Conditions d'Execution</h2>
+
+    <h3>3.1 Nature du contrat</h3>
+    <p>La presente mission est un <strong>forfait au livrable</strong>. Le montant est fixe et defini pour la livraison des livrables decrits a l'article 4. Il n'est pas conditionne au nombre d'heures ou de jours effectivement consommes. La base de 45 heures est une estimation indicative de l'effort necessaire.</p>
+
+    <h3>3.2 Montant forfaitaire</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Poste</th><th>Montant</th></tr></thead>
+            <tbody>
+                <tr><td><strong>Base estimative</strong></td><td>45 heures (5 jours x 9 heures)</td></tr>
+                <tr><td><strong>Taux horaire de reference</strong></td><td>225 NIS HT / heure</td></tr>
+                <tr><td><strong>Montant forfaitaire HT</strong></td><td>10 125 NIS</td></tr>
+                <tr><td><strong>TVA (18%)</strong></td><td>1 822,50 NIS</td></tr>
+                <tr><td><strong>Montant forfaitaire TTC</strong></td><td>11 947,50 NIS</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>3.3 Modalites de paiement</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Echeance</th><th>Montant</th><th>Declencheur</th></tr></thead>
+            <tbody>
+                <tr><td><strong>Acompte</strong></td><td>50% du montant TTC (5 973,75 NIS)</td><td>A la signature de la presente lettre de mission</td></tr>
+                <tr><td><strong>Solde</strong></td><td>50% du montant TTC (5 973,75 NIS)</td><td>A la livraison du livrable final valide</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>3.4 Delai de livraison</h3>
+    <ul>
+        <li>livraison sous 5 jours ouvres a compter de la date de signature</li>
+    </ul>
+
+    <h3>3.5 Processus de validation</h3>
+    <ol>
+        <li>Le Prestataire livre un premier prototype interactif</li>
+        <li>Le Donneur d'Ordre et/ou le Client Final effectue(nt) leurs retours</li>
+        <li>Le Prestataire integre les retours et livre une version affinee</li>
+        <li><strong>2 allers-retours</strong> de modifications sont inclus dans le forfait</li>
+        <li>Tout aller-retour supplementaire sera facture sur devis</li>
+    </ol>
+</section>
+
+<!-- ARTICLE 4 -->
+<section class="section-card">
+    <h2>4. Livrables</h2>
+
+    <h3>4.1 Prototype HTML interactif et fonctionnel</h3>
+    <p>Un prototype complet en HTML/CSS/JavaScript comprenant :</p>
+    <ul>
+        <li>Les 4 ecrans decrits dans le perimetre (grille, detail, TV, conflits)</li>
+        <li>Drag & drop fonctionnel</li>
+        <li>Navigation interactive (clics, etats, transitions)</li>
+        <li>Code couleur conforme aux exigences du client</li>
+        <li>Auto-scroll temporel sur l'ecran TV</li>
+        <li>Testable dans tout navigateur web sans installation</li>
+    </ul>
+
+    <h3>4.2 Document d'annotations fonctionnelles</h3>
+    <p>Le present cahier des charges (Partie II) faisant partie integrante de cette lettre de mission, detaillant l'ensemble des specifications fonctionnelles, le modele de donnees, et les contraintes techniques.</p>
+
+    <h3>4.3 Conversion Figma (option)</h3>
+    <p>Sur demande du Donneur d'Ordre, le Prestataire peut fournir une conversion des ecrans au format Figma editable.</p>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Poste</th><th>Montant</th></tr></thead>
+            <tbody>
+                <tr><td><strong>Montant HT</strong></td><td>1000 NIS</td></tr>
+                <tr><td><strong>TVA (18%)</strong></td><td>180 NIS</td></tr>
+                <tr><td><strong>Montant TTC</strong></td><td>1180 NIS</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <p>Cette option n'est pas incluse dans le forfait de base.</p>
+
+    <h3>4.4 Stack technique</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Element</th><th>Technologie</th></tr></thead>
+            <tbody>
+                <tr><td><strong>Prototypage</strong></td><td>HTML5, CSS3, JavaScript (ES6+)</td></tr>
+                <tr><td><strong>Interactivite</strong></td><td>HTML5 Drag and Drop API, DOM manipulation native</td></tr>
+                <tr><td><strong>Responsive</strong></td><td>CSS Grid, Flexbox</td></tr>
+                <tr><td><strong>Compatibilite cible</strong></td><td>Chrome, Edge, Safari (versions actuelles)</td></tr>
+                <tr><td><strong>Conversion Figma</strong></td><td>Via plugin html.to.design (si option activee)</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ARTICLE 5 -->
+<section class="section-card">
+    <h2>5. Propriete Intellectuelle et Confidentialite</h2>
+
+    <h3>5.1 Cession des droits</h3>
+    <p>A la livraison finale et au paiement integral du solde, le Prestataire cede au Donneur d'Ordre l'ensemble des droits de propriete intellectuelle sur les livrables produits dans le cadre de cette mission, y compris le droit de reproduction, de modification et d'adaptation.</p>
+
+    <h3>5.2 Confidentialite (NDA)</h3>
+    <p>Le Prestataire s'engage a :</p>
+    <ul>
+        <li>Maintenir la confidentialite de toutes les informations communiquees dans le cadre de cette mission</li>
+        <li>Ne pas divulguer, reproduire ou utiliser les documents du RFP, du transcript de workshop, ou toute autre information relative au projet a des fins autres que l'execution de la presente mission</li>
+    </ul>
+</section>
+
+<!-- ARTICLE 6 -->
+<section class="section-card">
+    <h2>6. Responsabilite et Garantie</h2>
+    <p>Le Prestataire garantit que les livrables seront conformes aux specifications definies dans le present cahier des charges. En cas de non-conformite constatee lors de la validation, le Prestataire s'engage a corriger les elements concernes dans le cadre des allers-retours prevus a l'article 3.5.</p>
+</section>
+
+<!-- ARTICLE 7 -->
+<section class="section-card">
+    <h2>7. Resolution des Litiges et Droit Applicable</h2>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+            <tbody>
+                <tr><td><strong>Droit applicable</strong></td><td>Droit israelien</td></tr>
+                <tr><td><strong>Resolution amiable</strong></td><td>En cas de differend, les parties s'engagent a recourir en premier lieu a une procedure de conciliation devant un Din Torah</td></tr>
+                <tr><td><strong>Juridiction</strong></td><td>A defaut de resolution amiable, les tribunaux competents de Tel Aviv seront saisis</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ARTICLE 8 -->
+<section class="section-card">
+    <h2>8. Signatures</h2>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th></th><th>Le Prestataire</th><th>Le Donneur d'Ordre</th></tr></thead>
+            <tbody>
+                <tr><td><strong>Nom</strong></td><td>Jeremy Bouznah</td><td>[A completer]</td></tr>
+                <tr><td><strong>Societe</strong></td><td>Jeremy Bouznah LTD</td><td>VO2 Israel</td></tr>
+                <tr><td><strong>Date</strong></td><td></td><td></td></tr>
+                <tr><td><strong>Signature</strong></td><td></td><td></td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+</div><!-- end tab1 -->
+
+<!-- TAB 2: CAHIER DES CHARGES -->
+<div class="tab-content" id="tab2">
+
+<!-- ARTICLE 9 -->
+<section class="section-card">
+    <h2>9. Contexte Metier</h2>
+
+    <h3>9.1 Presentation de Merkaz Tennis</h3>
+    <p>Merkaz Tennis (ITEC - Israel Tennis Education Centers) exploite 19 centres sportifs en Israel totalisant 215 terrains (tennis, paddle, pickleball, squash, football). L'organisation gere 8 antennes regionales et propose des programmes pour tous ages, des enfants aux seniors.</p>
+
+    <h3>9.2 Ecosysteme technique existant</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Systeme</th><th>Usage</th></tr></thead>
+            <tbody>
+                <tr><td>Center (CRM)</td><td>CRM interne custom - systeme actuel a remplacer</td></tr>
+                <tr><td>SAP</td><td>Comptabilite (code SAP = section budgetaire)</td></tr>
+                <tr><td>Salesforce</td><td>Module donateurs (existant, a etendre)</td></tr>
+                <tr><td>Smoove / FlowReach</td><td>Marketing Automation</td></tr>
+                <tr><td>Office 365</td><td>Mail, Sharepoint, stockage fichiers</td></tr>
+                <tr><td>Notion</td><td>Gestion de plans professionnels</td></tr>
+                <tr><td>Atanix</td><td>Gestion presence employes</td></tr>
+                <tr><td>Hergel</td><td>Systeme de paie</td></tr>
+                <tr><td>Yesh Kisui</td><td>Gestion achats</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>9.3 Problematiques actuelles</h3>
+    <ul>
+        <li>CRM "Center" extremement rigide, aucune flexibilite de configuration</li>
+        <li>Modifications mineures necessitant l'intervention du developpeur (delais importants)</li>
+        <li>Ecran d'emploi du temps (Looze) obsolete : pas de header fige, pas d'auto-scroll</li>
+        <li>Ecrans TV dans les centres : gommettes physiques pour identifier les terrains, scroll manuel par les standardistes</li>
+        <li>Absence de dashboard de controle en temps reel</li>
+        <li>Impossibilite de creer des categories sportives de maniere autonome</li>
+    </ul>
+
+    <h3>9.4 Objectifs du nouveau systeme</h3>
+    <p>Fournir un ecran de gestion des terrains moderne dans Salesforce (LWC) qui permette :</p>
+    <ul>
+        <li>Une gestion visuelle et intuitive de l'emploi du temps</li>
+        <li>Le respect du code couleur existant (20 ans d'habitudes)</li>
+        <li>Une flexibilite totale dans la configuration (centres, categories, terrains)</li>
+        <li>Un affichage public professionnel sur les ecrans TV des centres</li>
+        <li>Des indicateurs de performance en temps reel (taux d'occupation)</li>
+    </ul>
+</section>
+
+<!-- ARTICLE 10 -->
+<section class="section-card important">
+    <h2>10. Ecran 1 : Grille Emploi du Temps (Looze Migrashim)</h2>
+
+    <p>Cet ecran est le composant central du module de gestion des terrains. Il est utilise quotidiennement par les standardistes de chaque centre pour gerer les reservations, et par la direction pour le suivi global.</p>
+
+    <p><strong>Reference visuelle - Systeme actuel :</strong></p>
+    <p><em>(Capture d'ecran du RFP page 25 : grille avec colonnes numerotees 1 a 25+, lignes horaires de 7:00 a 8:30, cellules colorees par type de reservation. En haut : filtres par centre, boutons de categories sportives avec codes couleur. A gauche : labels des categories en hebreu avec fonds de couleur correspondants)</em></p>
+
+    <div class="image-block">
+        <img src="capture/1.png" alt="Systeme actuel - Grille Looze Migrashim" onclick="openLightbox(this)">
+        <p class="image-caption">Systeme actuel - Grille Looze Migrashim (Planning des terrains)</p>
+    </div>
+
+    <h3>10.1 Barre de navigation et filtres</h3>
+
+    <h4>10.1.1 Picklist de selection du centre</h4>
+    <ul>
+        <li><strong>Type</strong> : Liste deroulante (dropdown)</li>
+        <li><strong>Contenu</strong> : Liste de tous les centres Merkaz Tennis</li>
+        <li><strong>Comportement selon le role</strong> :
+            <ul>
+                <li>Standardiste / employe de centre : picklist verrouillee sur son propre centre (pas de choix)</li>
+                <li>Manager de centre : picklist verrouillee sur son propre centre + possibilite de consulter d'autres centres en lecture seule</li>
+                <li>Direction / Mate : acces a tous les centres</li>
+                <li>Super User : acces a tous les centres avec droits de modification</li>
+            </ul>
+        </li>
+        <li><strong>Valeur par defaut</strong> : le centre de l'utilisateur connecte</li>
+    </ul>
+
+    <h4>10.1.2 Multi-boutons de filtrage par categorie sportive</h4>
+    <ul>
+        <li><strong>Type</strong> : Boutons multi-selection (plusieurs peuvent etre actifs simultanement)</li>
+        <li><strong>Style</strong> : Boutons avec la couleur de fond correspondant a la categorie</li>
+        <li><strong>Categories actuelles a valider par le client</strong> :</li>
+    </ul>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Categorie</th><th>Couleur de fond</th><th>Code hex (a confirmer)</th></tr></thead>
+            <tbody>
+                <tr><td>Tennis</td><td>[a definir]</td><td>[a definir]</td></tr>
+                <tr><td>Paddle</td><td>[a definir]</td><td>[a definir]</td></tr>
+                <tr><td>Squash</td><td>[a definir]</td><td>[a definir]</td></tr>
+                <tr><td>Pickleball</td><td>[a definir]</td><td>[a definir]</td></tr>
+                <tr><td>Football</td><td>[a definir]</td><td>[a definir]</td></tr>
+                <tr><td>Fitness / Salle</td><td>[a definir]</td><td>[a definir]</td></tr>
+                <tr><td>Studio</td><td>[a definir]</td><td>[a definir]</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="block-warning"><p>[A VALIDER] : Liste definitive des categories sportives par centre. Chaque centre peut avoir un sous-ensemble different de categories.</p></div>
+
+    <ul>
+        <li><strong>Comportement</strong> : Au clic, filtre les colonnes de la grille pour n'afficher que les terrains de la/des categorie(s) selectionnee(s)</li>
+        <li><strong>Etat par defaut</strong> : Toutes les categories du centre sont affichees</li>
+    </ul>
+
+    <h4>10.1.3 Navigation temporelle</h4>
+    <ul>
+        <li><strong>Selecteur de date</strong> : Calendrier avec la date du jour selectionnee par defaut</li>
+        <li><strong>Boutons de navigation</strong> : Jour precedent / Jour suivant</li>
+        <li><strong>Vue</strong> : Vue journaliere (une journee a la fois)</li>
+    </ul>
+
+    <h3>10.2 Structure de la grille</h3>
+
+    <h4>10.2.1 Colonnes = Terrains</h4>
+    <ul>
+        <li>Chaque colonne represente un terrain physique du centre</li>
+        <li><strong>Header de colonne</strong> : Numero du terrain + categorie sportive</li>
+        <li><strong>Numerotation</strong> : Par categorie (Tennis 1, Tennis 2, ... Paddle 1, Paddle 2, ...)</li>
+        <li><strong>Tri</strong> : Groupes par categorie sportive</li>
+        <li><strong>Couleur de fond du header</strong> : Couleur de la categorie du terrain</li>
+    </ul>
+
+    <h4>10.2.2 Lignes = Creneaux horaires</h4>
+    <ul>
+        <li><strong>Intervalle</strong> : 30 minutes</li>
+        <li><strong>Plage horaire</strong> : Selon les heures d'ouverture du centre selectionne (ex: 6:00 - 23:00)</li>
+        <li><strong>Duree minimale de reservation</strong> : 1 heure</li>
+        <li><strong>Durees possibles</strong> : 1h, 1h30, 2h (configurable par categorie sportive)</li>
+    </ul>
+
+    <h4>10.2.3 Header fige (sticky)</h4>
+    <ul>
+        <li><strong>OBLIGATOIRE</strong> : Le header avec les numeros de terrain reste visible en permanence lors du scroll vertical</li>
+        <li>C'est un point douloureux majeur du systeme actuel (le header disparait au scroll, les centres ont mis des gommettes sur la TV)</li>
+    </ul>
+
+    <h4>10.2.4 Auto-scroll vers l'heure actuelle</h4>
+    <ul>
+        <li><strong>OBLIGATOIRE</strong> : A l'ouverture de l'ecran, la grille scrolle automatiquement pour afficher l'heure actuelle en haut de la zone visible</li>
+        <li>Le systeme actuel ne le fait pas : les standardistes doivent scroller manuellement toutes les 2 heures</li>
+    </ul>
+
+    <h3>10.3 Code couleur obligatoire des cellules</h3>
+    <p>Le code couleur est un element critique. Le personnel travaille avec ces couleurs depuis 20 ans. Elles doivent etre respectees imperativement.</p>
+
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Couleur</th><th>Code</th><th>Type de reservation</th><th>Informations affichees dans la cellule</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>Vert clair (&#1512;&#1511;&#1506; &#1497;&#1512;&#1493;&#1511; &#1489;&#1492;&#1497;&#1512;)</td>
+                    <td><span class="color-swatch" style="background:#A5D6A7"></span>~#A5D6A7 (approximatif, a confirmer)</td>
+                    <td>Promotion / reduction active sur le terrain</td>
+                    <td>Nom du client, horaire, indication promo</td>
+                </tr>
+                <tr>
+                    <td>Vert (&#1497;&#1512;&#1493;&#1511;)</td>
+                    <td><span class="color-swatch" style="background:#4CAF50"></span>~#4CAF50 (approximatif, a confirmer)</td>
+                    <td>Cours / entrainement adultes-seniors (Gil Chichimi)</td>
+                    <td>Nom du cours, nom du prof</td>
+                </tr>
+                <tr>
+                    <td>Bleu (&#1499;&#1495;&#1493;&#1500;)</td>
+                    <td><span class="color-swatch" style="background:#42A5F5"></span>~#42A5F5 (approximatif, a confirmer)</td>
+                    <td>Groupes enfants et communaute (Keita/Kehila)</td>
+                    <td>Nom du groupe, tranche d'age</td>
+                </tr>
+                <tr>
+                    <td>Gris (&#1488;&#1508;&#1493;&#1512;)</td>
+                    <td><span class="color-swatch" style="background:#BDBDBD"></span>~#BDBDBD (approximatif, a confirmer)</td>
+                    <td>Reservation de terrain standard</td>
+                    <td>Nom du client, horaire</td>
+                </tr>
+                <tr>
+                    <td>Jaune (&#1510;&#1492;&#1493;&#1489;)</td>
+                    <td><span class="color-swatch" style="background:#FFF176"></span>~#FFF176 (approximatif, a confirmer)</td>
+                    <td>Terrain bloque / Migrash Hassoum (travaux, evenement, anniversaire, Maccabiah)</td>
+                    <td>Motif du blocage</td>
+                </tr>
+                <tr>
+                    <td>Mauve/violet clair (&#1488;&#1508;&#1493;&#1512; &#1499;&#1492;&#1492;)</td>
+                    <td><span class="color-swatch" style="background:#CE93D8"></span>~#CE93D8 (approximatif, a confirmer)</td>
+                    <td>Entrainement personnel / Imoun Ishi</td>
+                    <td>Nom de l'entraineur + Nom du client</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="block-warning"><p>[A VALIDER] : Les codes hexadecimaux exacts de chaque couleur. Extraire des captures d'ecran du systeme actuel si disponibles.</p></div>
+
+    <h4>10.3.1 Icone speciale : Reservation interne (Shiboutz Atzmi)</h4>
+    <ul>
+        <li>Quand une icone specifique apparait dans une cellule, cela signifie que le terrain a ete reserve en interne (par un employe/prof) et non par un client externe</li>
+        <li><strong>[A DEFINIR]</strong> : Icone exacte a utiliser</li>
+    </ul>
+
+    <h4>10.3.2 Jour sans activite (Yom Lelo Peulot)</h4>
+    <ul>
+        <li>Quand un jour est marque "sans activite" (pas de cours), les terrains restent disponibles a la reservation</li>
+        <li>Le tarif passe automatiquement au tarif soir/weekend</li>
+        <li>Visuellement : indication claire que c'est un jour special</li>
+    </ul>
+
+    <h3>10.4 Contenu des cellules de reservation</h3>
+    <p>Chaque cellule occupee dans la grille affiche :</p>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Donnee</th><th>Obligatoire</th><th>Contextuel</th></tr></thead>
+            <tbody>
+                <tr><td>Nom du client / groupe</td><td>Oui</td><td>-</td></tr>
+                <tr><td>Horaire (debut - fin)</td><td>Oui</td><td>-</td></tr>
+                <tr><td>Numero de terrain</td><td>Non (implicite par la colonne)</td><td>-</td></tr>
+                <tr><td>Type de reservation (couleur)</td><td>Oui (via couleur de fond)</td><td>-</td></tr>
+                <tr><td>Nom de l'entraineur</td><td>-</td><td>Si cours ou entrainement personnel</td></tr>
+                <tr><td>Icone shiboutz atzmi</td><td>-</td><td>Si reservation interne</td></tr>
+                <tr><td>Indication promo</td><td>-</td><td>Si promotion active</td></tr>
+                <tr><td>Motif de blocage</td><td>-</td><td>Si terrain bloque (jaune)</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>10.5 Fonctionnalites interactives</h3>
+
+    <h4>10.5.1 Drag & drop</h4>
+    <ul>
+        <li><strong>Deplacer une reservation</strong> : L'utilisateur peut glisser une cellule de reservation d'un creneau/terrain vers un autre creneau/terrain</li>
+        <li><strong>Verification automatique</strong> : Le systeme verifie la disponibilite du creneau cible avant d'accepter le deplacement</li>
+        <li><strong>Annulation</strong> : Si le creneau cible est occupe, la cellule revient a sa position d'origine et un message d'erreur s'affiche</li>
+        <li><strong>Restrictions</strong> : Le drag & drop respecte les permissions de l'utilisateur (un standardiste ne peut pas deplacer des reservations d'un autre centre)</li>
+    </ul>
+
+    <h4>10.5.2 Clic sur un creneau vide = Creation rapide</h4>
+    <ul>
+        <li>Un clic sur un creneau vide ouvre l'ecran 2 (Detail de reservation) avec les champs pre-remplis :
+            <ul>
+                <li>Terrain : celui de la colonne cliquee</li>
+                <li>Horaire : celui de la ligne cliquee</li>
+                <li>Duree : par defaut 1h (modifiable)</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h4>10.5.3 Reservations repetitives (recurrence)</h4>
+    <ul>
+        <li>Possibilite de creer une reservation recurrente : "Tous les lundis a 10h sur le terrain 5"</li>
+        <li>Interface : Checkbox "Recurrence" + selection des jours + date de fin</li>
+        <li>La recurrence cree automatiquement les creneaux sur la periode definie</li>
+    </ul>
+
+    <div class="block-warning"><p>[A VALIDER] : Dans le systeme actuel, la recurrence hebdomadaire est reservee aux abonnes uniquement (checkbox '&#1500;&#1502;&#1504;&#1493;&#1497;&#1497;&#1501;: &#1492;&#1511;&#1510;&#1488;&#1492; &#1499;&#1505;&#1491;&#1512;&#1492; &#1513;&#1489;&#1493;&#1506;&#1497;&#1514;'). Cette restriction doit-elle etre maintenue dans le nouveau systeme ?</p></div>
+
+    <h4>10.5.4 Bouton de reservation directe</h4>
+    <ul>
+        <li>Un bouton "Reserver" accessible sans passer par le Looze (comme dans Google Calendar)</li>
+        <li>Ouvre le meme ecran de detail (Ecran 2) mais sans champs pre-remplis</li>
+        <li>L'utilisateur selectionne manuellement le centre, le terrain, la date, l'horaire</li>
+    </ul>
+
+    <h4>10.5.5 Gestion visuelle des conflits</h4>
+    <ul>
+        <li>Si deux reservations se chevauchent sur le meme terrain, la grille affiche un indicateur visuel de conflit (voir Ecran 4)</li>
+    </ul>
+
+    <h3>10.6 Lien vers Dashboard d'occupation</h3>
+    <ul>
+        <li><strong>Bouton</strong> en bas ou dans le header de la grille : "Taux d'occupation"</li>
+        <li><strong>Action</strong> : Ouvre le report Salesforce standard (hors scope de ce design) montrant le pourcentage de terrains reserves en temps reel sur la journee</li>
+        <li><strong>Seul le bouton/lien est dans le scope</strong> ; le contenu du dashboard est hors perimetre</li>
+    </ul>
+</section>
+
+<!-- ARTICLE 11 -->
+<section class="section-card important">
+    <h2>11. Ecran 2 : Detail d'une Reservation (Clic sur cellule)</h2>
+
+    <p>Cet ecran s'ouvre en <strong>modal / side panel</strong> quand l'utilisateur clique sur une cellule de la grille (occupee ou vide).</p>
+
+    <p><strong>Reference visuelle - Systeme actuel :</strong></p>
+    <p><em>(Capture du RFP page 25 : formulaire "Hashkarat Migrash Tennis" avec champs Nom, Date debut, Heure, Duree, Type (Imoun Ishi), zone Commentaires, boutons Ajouter/Annuler)</em></p>
+
+    <div class="image-block">
+        <img src="capture/RFP - מסמך ראשי_בקשה לקבלת הצעות מחיר V1.216062025 (4).jpeg" alt="Systeme actuel - Formulaire de reservation back-office" onclick="openLightbox(this)">
+        <p class="image-caption">Systeme actuel - Formulaire de reservation back-office (CRM Center)</p>
+    </div>
+
+    <h3>11.1 Mode "Creneau vide" (Nouvelle reservation)</h3>
+
+    <h4>11.1.1 Champs pre-remplis (depuis la grille)</h4>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Champ</th><th>Source</th><th>Modifiable</th></tr></thead>
+            <tbody>
+                <tr><td>Centre</td><td>Picklist de la grille</td><td>Non</td></tr>
+                <tr><td>Terrain</td><td>Colonne cliquee</td><td>Oui (dropdown)</td></tr>
+                <tr><td>Date</td><td>Date affichee dans la grille</td><td>Oui (datepicker)</td></tr>
+                <tr><td>Heure de debut</td><td>Ligne cliquee</td><td>Oui (timepicker)</td></tr>
+                <tr><td>Duree</td><td>1h par defaut</td><td>Oui (1h / 1h30 / 2h)</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="block-warning"><p>[A VALIDER] : Le formulaire actuel permet la reservation de plusieurs terrains simultanement (champ '&#1502;&#1490;&#1512;&#1513;/&#1497;&#1501; &#1500;&#1492;&#1513;&#1499;&#1512;&#1492;'). Cette fonctionnalite doit-elle etre conservee dans le nouveau systeme ?</p></div>
+
+    <h4>11.1.2 Recherche et selection du client</h4>
+    <ul>
+        <li><strong>Champ de recherche</strong> : Recherche par nom, prenom, telephone ou email</li>
+        <li><strong>Resultats</strong> : Liste des comptes Salesforce correspondants</li>
+        <li><strong>Selection</strong> : Clic sur un resultat remplit automatiquement les informations client</li>
+    </ul>
+
+    <h4>11.1.3 Creation rapide d'un nouveau client</h4>
+    <p>Si le client n'existe pas dans le systeme :</p>
+    <p><strong>Mode Guest (rapide) :</strong></p>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Champ</th><th>Obligatoire</th></tr></thead>
+            <tbody>
+                <tr><td>Prenom</td><td>Oui</td></tr>
+                <tr><td>Nom</td><td>Oui</td></tr>
+                <tr><td>Telephone</td><td>Oui</td></tr>
+                <tr><td>Email</td><td>Non</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p><strong>Mode Complet :</strong></p>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Champ</th><th>Obligatoire</th></tr></thead>
+            <tbody>
+                <tr><td>Prenom</td><td>Oui</td></tr>
+                <tr><td>Nom</td><td>Oui</td></tr>
+                <tr><td>Teudat Zehout (ID)</td><td>Oui</td></tr>
+                <tr><td>Date de naissance</td><td>Oui</td></tr>
+                <tr><td>Genre</td><td>Oui</td></tr>
+                <tr><td>Telephone</td><td>Oui</td></tr>
+                <tr><td>Email</td><td>Oui</td></tr>
+                <tr><td>Adresse</td><td>Non</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <ul>
+        <li>Le mode Guest cree un compte minimal dans Salesforce</li>
+        <li>Le mode Complet cree un compte standard</li>
+    </ul>
+
+    <h4>11.1.4 Type de reservation</h4>
+    <ul>
+        <li><strong>Dropdown</strong> : Reservation standard / Entrainement personnel / Blocage terrain / Cours collectif</li>
+        <li>Le choix influence la couleur de la cellule dans la grille</li>
+    </ul>
+
+    <h4>11.1.5 Zone commentaires</h4>
+    <ul>
+        <li>Champ texte libre pour notes internes</li>
+    </ul>
+
+    <h4>11.1.6 Bouton de validation</h4>
+    <ul>
+        <li><strong>"Reserver"</strong> : Cree la reservation et l'affiche dans la grille</li>
+        <li><strong>"Reserver et Payer"</strong> : Cree la reservation et enchaine vers le paiement</li>
+    </ul>
+
+    <h4>11.1.7 Enchainement vers le paiement</h4>
+    <div class="block-warning"><p>[EN SUSPENS] : L'ecran de paiement PelCard (via iframe) est-il dans le scope de cette mission ?</p></div>
+    <ul>
+        <li>Si oui : designer le flux de paiement integre</li>
+        <li>Si non : le bouton "Payer" renvoie vers le module de paiement existant</li>
+        <li><strong>A confirmer avec VO2 / Merkaz Tennis</strong></li>
+    </ul>
+
+    <h3>11.2 Mode "Creneau occupe" (Consultation/Modification)</h3>
+    <p>Quand l'utilisateur clique sur une cellule deja occupee :</p>
+
+    <h4>11.2.1 Informations affichees</h4>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Donnee</th><th>Affichage</th></tr></thead>
+            <tbody>
+                <tr><td>Nom du client</td><td>Texte + lien vers la fiche Salesforce</td></tr>
+                <tr><td>Telephone</td><td>Texte</td></tr>
+                <tr><td>Terrain</td><td>Numero + categorie</td></tr>
+                <tr><td>Date</td><td>JJ/MM/AAAA</td></tr>
+                <tr><td>Horaire</td><td>HH:MM - HH:MM</td></tr>
+                <tr><td>Duree</td><td>Xh</td></tr>
+                <tr><td>Type</td><td>Couleur + label</td></tr>
+                <tr><td>Commentaires</td><td>Texte</td></tr>
+                <tr><td>Reserve par</td><td>Nom de l'agent + date/heure de creation</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h4>11.2.2 Actions disponibles</h4>
+    <ul>
+        <li><strong>Modifier</strong> : Ouvre le formulaire en mode edition</li>
+        <li><strong>Annuler la reservation</strong> : Avec confirmation ("Etes-vous sur ?")</li>
+        <li><strong>Deplacer</strong> : Ouvre un selecteur de creneau alternatif</li>
+    </ul>
+
+    <!-- HORS SCOPE BLOCK -->
+    <div class="block-hors-scope">
+        <span class="hors-scope-badge">HORS SCOPE</span>
+        <p class="hors-scope-title">Contexte : Wizard de reservation client actuel</p>
+        <div class="hors-scope-images">
+            <div class="image-block">
+                <img src="capture/2.jpeg" alt="Etape 1 - Wizard reservation" onclick="openLightbox(this)">
+                <p class="image-caption">Etape 1 - Choix du centre, type, jour, heure, duree</p>
+            </div>
+            <div class="image-block">
+                <img src="capture/3.jpeg" alt="Etape 2 - Wizard reservation" onclick="openLightbox(this)">
+                <p class="image-caption">Etape 2 - Selection du terrain + carte du centre</p>
+            </div>
+            <div class="image-block">
+                <img src="capture/4.jpeg" alt="Etape 3 - Wizard reservation" onclick="openLightbox(this)">
+                <p class="image-caption">Etape 3 - Paiement avec timer + VIP</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ARTICLE 12 -->
+<section class="section-card">
+    <h2>12. Ecran 3 : Affichage Public TV (Entrees des centres)</h2>
+
+    <p>Cet ecran est affiche en permanence sur les ecrans geants a l'entree de chaque centre. Les clients qui arrivent pour jouer consultent cet ecran pour connaitre leur numero de terrain.</p>
+
+    <h3>12.1 Objectif et contexte</h3>
+    <ul>
+        <li><strong>Utilisateurs</strong> : Clients physiquement presents dans le centre</li>
+        <li><strong>Interaction</strong> : Aucune (lecture seule, pas de souris/clavier)</li>
+        <li><strong>Taille d'ecran</strong> : Grands ecrans TV (42" a 65")</li>
+        <li><strong>Distance de lecture</strong> : 2 a 5 metres</li>
+        <li><strong>Priorite</strong> : Lisibilite maximale, design epure, style "ecran d'information" (reference : ecrans des restaurants fast-food, ecrans d'aeroport)</li>
+    </ul>
+
+    <h3>12.2 Contenu affiche</h3>
+    <p>L'ecran affiche les reservations en cours et a venir (fenetre glissante de 2 a 3 heures).</p>
+
+    <h4>12.2.1 Par type de reservation</h4>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Type</th><th>Informations affichees</th><th>Couleur</th></tr></thead>
+            <tbody>
+                <tr><td>Reservation standard</td><td>Nom, Prenom, Numero de terrain</td><td>Gris</td></tr>
+                <tr><td>Cours collectif (Keita)</td><td>Nom du professeur, Numero de terrain</td><td>Bleu</td></tr>
+                <tr><td>Cours particulier (Imoun Ishi)</td><td>Nom du coach + Nom du client, Numero de terrain</td><td>Mauve</td></tr>
+                <tr><td>Terrain bloque</td><td>"Terrain indisponible", Numero de terrain</td><td>Jaune</td></tr>
+                <tr><td>Promotion active</td><td>Nom, Prenom, Numero de terrain, Badge "Promo"</td><td>Vert clair</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h4>12.2.2 Donnees NON affichees sur l'ecran TV</h4>
+    <ul>
+        <li>Pas de liste d'eleves des groupes</li>
+        <li>Pas d'ages</li>
+        <li>Pas de commentaires internes</li>
+        <li>Pas de details financiers</li>
+    </ul>
+
+    <h3>12.3 Auto-scroll temporel</h3>
+    <ul>
+        <li><strong>OBLIGATOIRE</strong> : L'ecran defile automatiquement pour que l'heure actuelle soit toujours visible</li>
+        <li><strong>Fenetre</strong> : Affiche les 2-3 prochaines heures de reservations</li>
+        <li><strong>Frequence de rafraichissement</strong> : Toutes les 60 secondes (minimum) pour refleter les nouvelles reservations</li>
+    </ul>
+
+    <h3>12.4 Design</h3>
+    <ul>
+        <li><strong>Police</strong> : Grande, lisible a distance (minimum 24pt equivalent) - a definir police exact a fournir par le client</li>
+        <li><strong>Contraste</strong> : Fort (fond sombre, texte clair OU fond clair, texte sombre - a tester)</li>
+        <li><strong>Organisation</strong> : Par categorie sportive (liserets colores) puis par terrain</li>
+        <li><strong>Pas de header complexe</strong> : Juste le nom du centre + l'heure actuelle</li>
+        <li><strong>Mode plein ecran</strong> : S'ouvre en mode fullscreen dans le navigateur</li>
+    </ul>
+
+    <h3>12.5 Elements en suspens pour l'ecran TV</h3>
+    <div class="block-warning"><p>[A VALIDER] : Design exact souhaite par le client (style McDo ? Style aeroport ? Style tableau des scores ?)</p></div>
+    <div class="block-warning"><p>[A VALIDER] : Faut-il afficher les creneaux vides (terrains disponibles) ou seulement les creneaux occupes ?</p></div>
+    <div class="block-warning"><p>[A VALIDER] : Filtrage par categorie sportive sur l'ecran TV ou affichage de toutes les categories ?</p></div>
+    <div class="block-warning"><p>[A VALIDER] : Affichage du nom complet ou seulement initiales/prenom pour la confidentialite ?</p></div>
+</section>
+
+<!-- ARTICLE 13 -->
+<section class="section-card warning-section">
+    <h2>13. Ecran 4 : Resolution de Conflits (Chevauchements)</h2>
+
+    <h3>13.1 Detection visuelle</h3>
+    <p>Quand deux reservations se chevauchent sur le meme terrain et le meme creneau :</p>
+    <ul>
+        <li>Les cellules en conflit sont encadrees en <strong>rouge vif</strong></li>
+        <li>Une icone d'alerte (triangle avec exclamation) apparait</li>
+        <li>Un compteur de conflits s'affiche dans le header de la grille</li>
+    </ul>
+
+    <h3>13.2 Modal de resolution</h3>
+    <p>Au clic sur une cellule en conflit, une modal specifique s'ouvre avec :</p>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Information</th><th>Affichage</th></tr></thead>
+            <tbody>
+                <tr><td>Reservation A</td><td>Nom client, horaire, type, date de creation</td></tr>
+                <tr><td>Reservation B</td><td>Nom client, horaire, type, date de creation</td></tr>
+                <tr><td>Terrain concerne</td><td>Numero + categorie</td></tr>
+                <tr><td>Type de conflit</td><td>Chevauchement total / partiel</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>13.3 Options de resolution</h3>
+    <ul>
+        <li><strong>Deplacer la reservation A</strong> : Ouvre un selecteur de creneau alternatif pour A</li>
+        <li><strong>Deplacer la reservation B</strong> : Ouvre un selecteur de creneau alternatif pour B</li>
+        <li><strong>Annuler la reservation A</strong> : Supprime A (avec confirmation)</li>
+        <li><strong>Annuler la reservation B</strong> : Supprime B (avec confirmation)</li>
+        <li><strong>Forcer (conserver les deux)</strong> : Maintient le conflit (utilisateur averti, decision volontaire, necessite un profil avec permission)</li>
+    </ul>
+    <div class="block-warning"><p>[A VALIDER] : Y a-t-il une regle de priorite automatique ? (ex: premier arrive premier servi, cours collectif prioritaire sur individuel, etc.)</p></div>
+</section>
+
+<!-- ARTICLE 14 -->
+<section class="section-card">
+    <h2>14. Modele de Donnees</h2>
+
+    <h3>14.1 Entite : Centre (Merkaz)</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Champ</th><th>Type</th><th>Obligatoire</th><th>Description</th></tr></thead>
+            <tbody>
+                <tr><td>ID</td><td>Auto</td><td>Oui</td><td>Identifiant unique</td></tr>
+                <tr><td>Nom</td><td>Texte</td><td>Oui</td><td>Nom du centre (ex: Jerusalem, Haifa, Ramat HaSharon)</td></tr>
+                <tr><td>Ville</td><td>Texte</td><td>Oui</td><td>Ville</td></tr>
+                <tr><td>Adresse</td><td>Texte</td><td>Non</td><td>Adresse complete</td></tr>
+                <tr><td>Telephone</td><td>Texte</td><td>Non</td><td>Numero de contact</td></tr>
+                <tr><td>Heure d'ouverture</td><td>Heure</td><td>Oui</td><td>Heure de debut d'activite</td></tr>
+                <tr><td>Heure de fermeture</td><td>Heure</td><td>Oui</td><td>Heure de fin d'activite</td></tr>
+                <tr><td>Statut</td><td>Picklist</td><td>Oui</td><td>Ouvert / Ferme / Restreint</td></tr>
+                <tr><td>GPS Latitude</td><td>Nombre</td><td>Non</td><td>Pour geolocalisation</td></tr>
+                <tr><td>GPS Longitude</td><td>Nombre</td><td>Non</td><td>Pour geolocalisation</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>14.2 Entite : Categorie Sportive</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Champ</th><th>Type</th><th>Obligatoire</th><th>Description</th></tr></thead>
+            <tbody>
+                <tr><td>ID</td><td>Auto</td><td>Oui</td><td>Identifiant unique</td></tr>
+                <tr><td>Nom</td><td>Texte</td><td>Oui</td><td>Tennis, Paddle, Squash, Pickleball, Football, Studio, Fitness</td></tr>
+                <tr><td>Couleur</td><td>Hex</td><td>Oui</td><td>Code couleur d'affichage</td></tr>
+                <tr><td>Icone</td><td>Image/SVG</td><td>Non</td><td>Icone representative</td></tr>
+                <tr><td>Actif</td><td>Boolean</td><td>Oui</td><td>Categorie active dans le systeme</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>14.3 Entite : Terrain (Migrash)</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Champ</th><th>Type</th><th>Obligatoire</th><th>Description</th></tr></thead>
+            <tbody>
+                <tr><td>ID</td><td>Auto</td><td>Oui</td><td>Identifiant unique (API Name)</td></tr>
+                <tr><td>Numero d'affichage</td><td>Texte</td><td>Oui</td><td>Numero visible (ex: "Paddle 1", "Tennis 3")</td></tr>
+                <tr><td>Centre</td><td>Lookup</td><td>Oui</td><td>Reference vers le Centre</td></tr>
+                <tr><td>Categorie</td><td>Lookup</td><td>Oui</td><td>Reference vers la Categorie Sportive</td></tr>
+                <tr><td>Heure d'ouverture</td><td>Heure</td><td>Non</td><td>Override des heures du centre</td></tr>
+                <tr><td>Heure de fermeture</td><td>Heure</td><td>Non</td><td>Override des heures du centre</td></tr>
+                <tr><td>Statut</td><td>Picklist</td><td>Oui</td><td>Actif / En maintenance / Ferme</td></tr>
+                <tr><td>Couvert</td><td>Boolean</td><td>Non</td><td>Terrain couvert ou decouvert</td></tr>
+                <tr><td>Eclairage</td><td>Boolean</td><td>Non</td><td>Terrain eclaire (pour jeu en soiree)</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>14.4 Entite : Reservation (Hazmana)</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Champ</th><th>Type</th><th>Obligatoire</th><th>Description</th></tr></thead>
+            <tbody>
+                <tr><td>ID</td><td>Auto</td><td>Oui</td><td>Identifiant unique</td></tr>
+                <tr><td>Terrain</td><td>Lookup</td><td>Oui</td><td>Reference vers le Terrain</td></tr>
+                <tr><td>Client</td><td>Lookup</td><td>Oui</td><td>Reference vers le Compte client</td></tr>
+                <tr><td>Date</td><td>Date</td><td>Oui</td><td>Date de la reservation</td></tr>
+                <tr><td>Heure de debut</td><td>Heure</td><td>Oui</td><td>Heure de debut</td></tr>
+                <tr><td>Heure de fin</td><td>Heure</td><td>Oui</td><td>Heure de fin</td></tr>
+                <tr><td>Duree (minutes)</td><td>Nombre</td><td>Oui</td><td>60, 90 ou 120</td></tr>
+                <tr><td>Type</td><td>Picklist</td><td>Oui</td><td>Standard / Entrainement personnel / Blocage / Cours collectif / Promotion</td></tr>
+                <tr><td>Statut</td><td>Picklist</td><td>Oui</td><td>Confirmee / En attente / Annulee / En cours</td></tr>
+                <tr><td>Entraineur</td><td>Lookup</td><td>Non</td><td>Reference vers le Coach (si applicable)</td></tr>
+                <tr><td>Shiboutz Atzmi</td><td>Boolean</td><td>Non</td><td>True si reservation interne</td></tr>
+                <tr><td>Commentaires</td><td>Texte long</td><td>Non</td><td>Notes</td></tr>
+                <tr><td>Cree par</td><td>Utilisateur</td><td>Oui</td><td>Agent qui a cree la reservation</td></tr>
+                <tr><td>Date de creation</td><td>DateTime</td><td>Oui</td><td>Horodatage</td></tr>
+                <tr><td>Recurrence</td><td>Lookup</td><td>Non</td><td>Reference vers une regle de recurrence</td></tr>
+                <tr><td>Montant</td><td>Devise</td><td>Non</td><td>Montant facture</td></tr>
+                <tr><td>Methode de paiement</td><td>Picklist</td><td>Non</td><td>CB / Cartisia / Manoui / Cash / Aucun</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>14.5 Entite : Regle de Blocage (Chissima)</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Champ</th><th>Type</th><th>Obligatoire</th><th>Description</th></tr></thead>
+            <tbody>
+                <tr><td>ID</td><td>Auto</td><td>Oui</td><td>Identifiant unique</td></tr>
+                <tr><td>Niveau</td><td>Picklist</td><td>Oui</td><td>Organisation / Centre / Categorie / Terrain</td></tr>
+                <tr><td>Centre</td><td>Lookup</td><td>Conditionnel</td><td>Si niveau Centre ou inferieur</td></tr>
+                <tr><td>Categorie</td><td>Lookup</td><td>Conditionnel</td><td>Si niveau Categorie ou Terrain</td></tr>
+                <tr><td>Terrain</td><td>Lookup</td><td>Conditionnel</td><td>Si niveau Terrain</td></tr>
+                <tr><td>Date de debut</td><td>DateTime</td><td>Oui</td><td>Debut du blocage</td></tr>
+                <tr><td>Date de fin</td><td>DateTime</td><td>Oui</td><td>Fin du blocage (retour automatique a la normale)</td></tr>
+                <tr><td>Motif</td><td>Texte</td><td>Oui</td><td>Raison du blocage</td></tr>
+                <tr><td>Impact reservations</td><td>Boolean</td><td>Oui</td><td>Bloque aussi les reservations existantes ?</td></tr>
+                <tr><td>Impact cours</td><td>Boolean</td><td>Oui</td><td>Annule aussi les cours programmes ?</td></tr>
+                <tr><td>Tarif special</td><td>Lookup</td><td>Non</td><td>Tarif derogatoire pendant le blocage</td></tr>
+                <tr><td>Cree par</td><td>Utilisateur</td><td>Oui</td><td>Qui a cree la regle</td></tr>
+                <tr><td>Statut</td><td>Picklist</td><td>Oui</td><td>Active / Expiree / Annulee</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>14.6 Entite : Client (Lakhoah)</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Champ</th><th>Type</th><th>Obligatoire</th><th>Description</th></tr></thead>
+            <tbody>
+                <tr><td>ID</td><td>Auto</td><td>Oui</td><td>Identifiant Salesforce</td></tr>
+                <tr><td>Prenom</td><td>Texte</td><td>Oui</td><td></td></tr>
+                <tr><td>Nom</td><td>Texte</td><td>Oui</td><td></td></tr>
+                <tr><td>Teudat Zehout</td><td>Texte</td><td>Non (Guest) / Oui (Complet)</td><td>Numero ID israelien</td></tr>
+                <tr><td>Date de naissance</td><td>Date</td><td>Non</td><td></td></tr>
+                <tr><td>Genre</td><td>Picklist</td><td>Non</td><td>Homme / Femme</td></tr>
+                <tr><td>Telephone</td><td>Texte</td><td>Oui</td><td></td></tr>
+                <tr><td>Email</td><td>Texte</td><td>Non (Guest) / Oui (Complet)</td><td></td></tr>
+                <tr><td>Centre de reference</td><td>Lookup</td><td>Non</td><td>Centre habituel</td></tr>
+                <tr><td>Type</td><td>Picklist</td><td>Oui</td><td>Guest / Standard / Abonne / VIP</td></tr>
+                <tr><td>Solde Arnak (Wallet)</td><td>Devise</td><td>Non</td><td>Solde du porte-monnaie numerique</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>14.7 Schema relationnel (vue simplifiee)</h3>
+    <div class="schema-container">
+        <div class="schema-grid">
+            <div class="schema-entity">
+                <div class="schema-entity-header">Centre</div>
+                <div class="schema-entity-body">ID, Nom, Ville, Horaires, Statut</div>
+            </div>
+            <div class="schema-entity">
+                <div class="schema-entity-header">Categorie Sportive</div>
+                <div class="schema-entity-body">ID, Nom, Couleur, Icone</div>
+            </div>
+            <div class="schema-entity">
+                <div class="schema-entity-header">Terrain</div>
+                <div class="schema-entity-body">ID, Numero, Centre, Categorie, Statut</div>
+            </div>
+            <div class="schema-entity">
+                <div class="schema-entity-header">Reservation</div>
+                <div class="schema-entity-body">ID, Terrain, Client, Date, Horaires, Type</div>
+            </div>
+            <div class="schema-entity">
+                <div class="schema-entity-header">Client</div>
+                <div class="schema-entity-body">ID, Nom, Prenom, Tel, Type</div>
+            </div>
+            <div class="schema-entity">
+                <div class="schema-entity-header">Entraineur</div>
+                <div class="schema-entity-body">ID, Nom, Specialite</div>
+            </div>
+            <div class="schema-entity">
+                <div class="schema-entity-header">Regle de Blocage</div>
+                <div class="schema-entity-body">ID, Niveau, Dates, Motif</div>
+            </div>
+        </div>
+        <div class="schema-relations" style="margin-top: 24px;">
+            <p><code>Centre</code> 1--N <code>Terrain</code> | <code>Centre</code> 1--N <code>Categorie Sportive</code></p>
+            <p><code>Terrain</code> 1--N <code>Reservation</code> | <code>Client</code> 1--N <code>Reservation</code></p>
+            <p><code>Entraineur</code> 1--N <code>Reservation</code></p>
+            <p><code>Centre/Categorie/Terrain</code> &larr; <code>Regle de Blocage</code></p>
+        </div>
+    </div>
+</section>
+
+<!-- ARTICLE 15 -->
+<section class="section-card">
+    <h2>15. Contraintes Techniques Salesforce LWC</h2>
+    <p>Le prototype HTML devra etre concu en tenant compte des contraintes suivantes, documentees par Salesforce pour les Lightning Web Components.</p>
+
+    <h3>15.1 Shadow DOM et CSS</h3>
+    <ul>
+        <li>Les styles CSS sont confines au composant (Shadow DOM) : impossible de styler un composant enfant depuis un composant parent</li>
+        <li>Le theming doit passer par des <strong>CSS Custom Properties</strong> (variables CSS)</li>
+        <li>Les selecteurs d'ID ne fonctionnent pas en LWC (les IDs sont transformes en runtime)</li>
+    </ul>
+
+    <h3>15.2 Drag & Drop</h3>
+    <ul>
+        <li><strong>Pas d'API native</strong> de drag & drop dans LWC</li>
+        <li>Implementation requise via l'API HTML5 Drag and Drop (dragstart, dragover, drop)</li>
+        <li><strong>Contrainte critique</strong> : les evenements drag ne traversent PAS les frontieres du Shadow DOM</li>
+    </ul>
+
+    <h3>15.3 Performance et volumes</h3>
+    <ul>
+        <li>Maximum recommande : <strong>1 000 lignes x 5 colonnes</strong> pour un datatable standard</li>
+        <li>Pour la grille planning (ex: 20 terrains x 34 creneaux de 30 min = 680 cellules) : dans les limites acceptables</li>
+        <li>Si plus de 25 terrains : envisager la pagination par categorie sportive ou le lazy loading</li>
+        <li>Pas de composant standard datatable avec fusion de cellules : le composant grille devra utiliser du <strong>positionnement CSS absolu</strong> pour les blocs de reservation</li>
+    </ul>
+
+    <h3>15.4 Librairies tierces</h3>
+    <ul>
+        <li>Upload en <strong>Static Resource</strong> obligatoire (max 5 MB par fichier)</li>
+        <li>Interdit : <code>eval()</code>, <code>new Function()</code>, injection de <code>&lt;script&gt;</code></li>
+        <li><strong>React, Vue, Angular</strong> : inutilisables dans LWC</li>
+        <li><strong>FullCalendar</strong> : v4 compatible avec <code>lwc:dom="manual"</code>, v5/v6 incompatibles</li>
+        <li><strong>D3.js, Chart.js</strong> : compatibles sous LWS</li>
+    </ul>
+
+    <h3>15.5 Temps reel</h3>
+    <ul>
+        <li>Mises a jour via <strong>Platform Events</strong> ou <strong>Change Data Capture</strong> (lightning/empApi)</li>
+        <li>Latence inherente (near real-time, pas real-time strict)</li>
+        <li>Maximum 2 000 souscripteurs concurrents par organisation</li>
+    </ul>
+
+    <h3>15.6 iframes (pour PelCard)</h3>
+    <ul>
+        <li>LWS restreint les <code>src</code> a http:// et https://</li>
+        <li>Cross-origin : meme politique que le navigateur</li>
+        <li>Integration PelCard possible via iframe avec <code>postMessage</code> pour la communication</li>
+    </ul>
+
+    <h3>15.7 Calendrier standard Salesforce</h3>
+    <ul>
+        <li>Limite a <strong>150 evenements</strong> : inutilisable pour ce cas d'usage</li>
+        <li><strong>Composant custom obligatoire</strong> pour la grille de planning</li>
+    </ul>
+</section>
+
+<!-- ARTICLE 16 -->
+<section class="section-card warning-section">
+    <h2>16. Elements en Suspens (A Confirmer)</h2>
+    <p>Les elements suivants necessitent une validation de VO2 et/ou du client final Merkaz Tennis avant la finalisation des maquettes :</p>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>#</th><th>Element</th><th>Question</th><th>Impact</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td>Ecran TV public</td><td>Design exact souhaite (style McDo, aeroport, tableau des scores ?)</td><td>Design ecran 3</td></tr>
+                <tr><td>2</td><td>Ecran TV public</td><td>Afficher les creneaux vides ou seulement les occupes ?</td><td>Contenu ecran 3</td></tr>
+                <tr><td>3</td><td>Ecran TV public</td><td>Nom complet ou initiales pour confidentialite ?</td><td>Donnees ecran 3</td></tr>
+                <tr><td>4</td><td>Paiement PelCard</td><td>L'ecran de paiement est-il dans le scope de cette mission ?</td><td>Ecran 2 - flow post-reservation</td></tr>
+                <tr><td>5</td><td>Codes couleur hex</td><td>Codes hexadecimaux exacts des couleurs actuelles</td><td>Ecrans 1, 2, 3</td></tr>
+                <tr><td>6</td><td>Categories sport</td><td>Liste definitive des categories par centre</td><td>Ecran 1 - filtres</td></tr>
+                <tr><td>7</td><td>Icone Shiboutz Atzmi</td><td>Icone exacte a utiliser pour les reservations internes</td><td>Ecran 1 - cellules</td></tr>
+                <tr><td>8</td><td>Regle de priorite conflits</td><td>Y a-t-il une hierarchie automatique pour resoudre les conflits ?</td><td>Ecran 4</td></tr>
+                <tr><td>9</td><td>Permissions par role</td><td>Matrice detaillee des droits par role utilisateur</td><td>Tous les ecrans</td></tr>
+                <tr><td>10</td><td>Durees par categorie</td><td>Quelles durees sont disponibles pour chaque sport ?</td><td>Ecran 2</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ARTICLE 17 -->
+<section class="section-card">
+    <h2>17. Glossaire</h2>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Terme hebreu</th><th>Transcription</th><th>Traduction / Signification</th></tr></thead>
+            <tbody>
+                <tr><td>&#1500;&#1493;&#1495; &#1502;&#1490;&#1512;&#1513;&#1497;&#1501;</td><td>Looze Migrashim</td><td>Emploi du temps / Planning des terrains</td></tr>
+                <tr><td>&#1502;&#1490;&#1512;&#1513;</td><td>Migrash</td><td>Terrain</td></tr>
+                <tr><td>&#1502;&#1512;&#1499;&#1494;</td><td>Merkaz</td><td>Centre</td></tr>
+                <tr><td>&#1492;&#1513;&#1499;&#1512;&#1492;</td><td>Hashkara</td><td>Location / Reservation</td></tr>
+                <tr><td>&#1513;&#1497;&#1489;&#1493;&#1509; &#1506;&#1510;&#1502;&#1497;</td><td>Shiboutz Atzmi</td><td>Assignation interne (reservation par un employe)</td></tr>
+                <tr><td>&#1502;&#1490;&#1512;&#1513; &#1495;&#1505;&#1493;&#1501;</td><td>Migrash Hassoum</td><td>Terrain bloque</td></tr>
+                <tr><td>&#1488;&#1497;&#1502;&#1493;&#1503; &#1488;&#1497;&#1513;&#1497;</td><td>Imoun Ishi</td><td>Entrainement personnel</td></tr>
+                <tr><td>&#1511;&#1492;&#1497;&#1500;&#1492;</td><td>Kehila</td><td>Communaute</td></tr>
+                <tr><td>&#1511;&#1497;&#1497;&#1496;&#1492;</td><td>Keita</td><td>Programme / Camp pour enfants</td></tr>
+                <tr><td>&#1499;&#1512;&#1496;&#1497;&#1505;&#1497;&#1497;&#1492;</td><td>Cartisia</td><td>Carte multi-reservations</td></tr>
+                <tr><td>&#1502;&#1504;&#1493;&#1497;</td><td>Manoui</td><td>Abonne / Abonnement</td></tr>
+                <tr><td>&#1488;&#1512;&#1504;&#1511;</td><td>Arnak</td><td>Porte-monnaie / Wallet</td></tr>
+                <tr><td>&#1514;&#1506;&#1512;&#1497;&#1507;</td><td>Taarif</td><td>Tarif</td></tr>
+                <tr><td>&#1492;&#1511;&#1508;&#1488;&#1492;</td><td>Hakpaa</td><td>Gel (suspension d'un compte/abonnement)</td></tr>
+                <tr><td>&#1489;&#1497;&#1496;&#1493;&#1500;</td><td>Bittoul</td><td>Annulation</td></tr>
+                <tr><td>&#1490;&#1497;&#1500; &#1513;&#1500;&#1497;&#1513;&#1497;</td><td>Gil Chichimi</td><td>3eme age / Seniors</td></tr>
+                <tr><td>&#1502;&#1514;&#1488;&#1502;&#1503;</td><td>Mitamen</td><td>Sportif / Personne qui s'entraine</td></tr>
+                <tr><td>&#1502;&#1488;&#1502;&#1503;</td><td>Meamen</td><td>Entraineur / Coach</td></tr>
+                <tr><td>&#1497;&#1493;&#1501; &#1500;&#1500;&#1488; &#1508;&#1506;&#1497;&#1500;&#1493;&#1514;</td><td>Yom Lelo Peulot</td><td>Jour sans activite (fermeture partielle)</td></tr>
+                <tr><td>&#1495;&#1505;&#1497;&#1502;&#1492;</td><td>Hassima</td><td>Blocage</td></tr>
+                <tr><td>&#1491;&#1497;&#1503; &#1514;&#1493;&#1512;&#1492;</td><td>Din Torah</td><td>Procedure de conciliation rabbinique</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+</div><!-- end tab2 -->
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-confidential">Document confidentiel - Diffusion restreinte</div>
+    <p class="footer-meta">Version 1.0 | Document redige le 25 mai 2025 | En attente de validation</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img src="" alt="" id="lightbox-img">
+</div>
+
+<script>
+    // Tabs
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            tab.classList.add('active');
+            document.getElementById(tab.dataset.tab).classList.add('active');
+        });
+    });
+
+    // Lightbox
+    function openLightbox(img) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+    });
+</script>
+
+</body>
+</html>
