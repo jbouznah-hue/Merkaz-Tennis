@@ -10,6 +10,6 @@ COPY . .
 # Create data dir for persistent signatures
 RUN mkdir -p /app/data
 
-EXPOSE 3000
+EXPOSE 80
 
 CMD ["node", "server.js"]
