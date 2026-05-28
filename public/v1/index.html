@@ -3741,8 +3741,9 @@ Number.prototype.clamp = function(min, max) { return Math.min(Math.max(this, min
     };
 
     const CATEGORIES = [
+        { key: 'garder', label: 'Garder', icon: '✅', color: '#10b981' },
         { key: 'changement', label: 'Changement', icon: '🔄', color: '#3b82f6' },
-        { key: 'suggestion', label: 'Suggestion', icon: '💡', color: '#22c55e' },
+        { key: 'suggestion', label: 'Suggestion', icon: '💡', color: '#8b5cf6' },
         { key: 'question', label: 'Question', icon: '❓', color: '#f59e0b' },
         { key: 'bug', label: 'Bug', icon: '🐛', color: '#ef4444' },
     ];
@@ -4004,6 +4005,7 @@ Number.prototype.clamp = function(min, max) { return Math.min(Math.max(this, min
             version: 'v1',
             totalAnnotations: STATE.annotations.length,
             summary: {
+                garder: STATE.annotations.filter(a => a.category === 'garder').length,
                 changement: STATE.annotations.filter(a => a.category === 'changement').length,
                 suggestion: STATE.annotations.filter(a => a.category === 'suggestion').length,
                 question: STATE.annotations.filter(a => a.category === 'question').length,
