@@ -3802,6 +3802,9 @@ Number.prototype.clamp = function(min, max) { return Math.min(Math.max(this, min
         .anno-toolbar .export-btn:hover { background: #16a34a; }
         .anno-toolbar .clear-btn { background: rgba(239,68,68,0.2); color: #fca5a5; }
         .anno-toolbar .clear-btn:hover { background: rgba(239,68,68,0.4); }
+        .anno-toolbar .keep-btn { background: rgba(16,185,129,0.15); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+        .anno-toolbar .keep-btn:hover { background: rgba(16,185,129,0.3); }
+        .anno-toolbar .keep-btn.active { background: #10b981; color: white; }
         .anno-highlight { outline: 2px dashed #3b82f6 !important; outline-offset: 2px; cursor: crosshair !important; }
         .anno-pin {
             position: absolute; width: 22px; height: 22px; border-radius: 50%;
@@ -3882,6 +3885,21 @@ Number.prototype.clamp = function(min, max) { return Math.min(Math.max(this, min
         if (STATE.hoveredEl) STATE.hoveredEl.classList.remove('anno-highlight');
     });
 
+    // ---- Keep mode ----
+    let keepMode = false;
+    const keepBtn = document.createElement('button');
+    keepBtn.className = 'keep-btn';
+    keepBtn.id = 'annoKeep';
+    keepBtn.textContent = '✅ Garder';
+    toolbar.insertBefore(keepBtn, document.getElementById('annoExport'));
+
+    keepBtn.addEventListener('click', () => {
+        keepMode = !keepMode;
+        keepBtn.classList.toggle('active', keepMode);
+        keepBtn.textContent = keepMode ? '✅ Mode Garder (ON)' : '✅ Garder';
+        if (keepMode && !STATE.active) toggleBtn.click();
+    });
+
     // ---- Click to annotate ----
     document.addEventListener('click', (e) => {
         if (!STATE.active) return;
@@ -3891,6 +3909,39 @@ Number.prototype.clamp = function(min, max) { return Math.min(Math.max(this, min
 
         const el = e.target;
         el.classList.remove('anno-highlight');
+
+        if (keepMode) {
+            // Direct "garder" — no popup
+            const rect = el.getBoundingClientRect();
+            const annotation = {
+                id: STATE.nextId++,
+                category: 'garder',
+                comment: 'Garder cet element pour la prochaine version',
+                timestamp: new Date().toISOString(),
+                element: {
+                    tagName: el.tagName.toLowerCase(),
+                    className: el.className || '',
+                    id: el.id || '',
+                    textContent: (el.textContent || '').trim().substring(0, 100),
+                    cssSelector: getCssSelector(el),
+                    boundingRect: { x: Math.round(rect.x), y: Math.round(rect.y), width: Math.round(rect.width), height: Math.round(rect.height) }
+                },
+                position: {
+                    clickX: Math.round(e.pageX),
+                    clickY: Math.round(e.pageY),
+                    viewportWidth: window.innerWidth,
+                    viewportHeight: window.innerHeight,
+                    scrollX: Math.round(window.scrollX),
+                    scrollY: Math.round(window.scrollY)
+                },
+                browser: { userAgent: navigator.userAgent, language: navigator.language, platform: navigator.platform },
+                page: { url: window.location.href, title: document.title }
+            };
+            STATE.annotations.push(annotation);
+            countEl.textContent = STATE.annotations.length;
+            placePin(annotation, el);
+            return;
+        }
 
         openPopup(el, e.clientX, e.clientY, e.pageX, e.pageY);
     }, true);
@@ -3908,10 +3959,11 @@ Number.prototype.clamp = function(min, max) { return Math.min(Math.max(this, min
         popup.style.top = Math.max(10, top) + 'px';
         popup.style.left = Math.max(10, left) + 'px';
 
+        const OTHER_CATS = CATEGORIES.filter(c => c.key !== 'garder');
         popup.innerHTML = `
             <h4>Ajouter une annotation</h4>
             <div class="anno-cats">
-                ${CATEGORIES.map(c => `<button class="anno-cat-btn" data-cat="${c.key}" style="color: ${c.color}">${c.icon} ${c.label}</button>`).join('')}
+                ${OTHER_CATS.map(c => `<button class="anno-cat-btn" data-cat="${c.key}" style="color: ${c.color}">${c.icon} ${c.label}</button>`).join('')}
             </div>
             <textarea placeholder="Votre commentaire..." id="annoComment"></textarea>
             <div class="anno-popup-actions">
