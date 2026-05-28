@@ -3799,6 +3799,8 @@ Number.prototype.clamp = function(min, max) { return Math.min(Math.max(this, min
         }
         .anno-toolbar .export-btn { background: #22c55e; }
         .anno-toolbar .export-btn:hover { background: #16a34a; }
+        .anno-toolbar .clear-btn { background: rgba(239,68,68,0.2); color: #fca5a5; }
+        .anno-toolbar .clear-btn:hover { background: rgba(239,68,68,0.4); }
         .anno-highlight { outline: 2px dashed #3b82f6 !important; outline-offset: 2px; cursor: crosshair !important; }
         .anno-pin {
             position: absolute; width: 22px; height: 22px; border-radius: 50%;
@@ -3846,6 +3848,7 @@ Number.prototype.clamp = function(min, max) { return Math.min(Math.max(this, min
         <button class="toggle-btn" id="annoToggle">📝 Mode annotation</button>
         <span class="count" id="annoCount">0</span>
         <button class="export-btn" id="annoExport">⬇ Exporter JSON</button>
+        <button class="clear-btn" id="annoClear">🗑 Vider</button>
     `;
     document.body.appendChild(toolbar);
 
@@ -4017,6 +4020,16 @@ Number.prototype.clamp = function(min, max) { return Math.min(Math.max(this, min
         a.download = `annotations_v1_${ts}.json`;
         a.click();
         URL.revokeObjectURL(url);
+    });
+
+    // Clear all annotations
+    document.getElementById('annoClear').addEventListener('click', () => {
+        if (!STATE.annotations.length) return;
+        if (!confirm('Supprimer toutes les annotations ?')) return;
+        STATE.annotations = [];
+        STATE.nextId = 1;
+        countEl.textContent = '0';
+        document.querySelectorAll('.anno-pin').forEach(p => p.remove());
     });
 
     // Close popup on Escape
